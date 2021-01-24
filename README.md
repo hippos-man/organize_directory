@@ -1,1 +1,1 @@
-# organize_directory
+# Directory organizer
