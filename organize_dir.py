@@ -44,13 +44,15 @@ if len(argv) != 2:
     print("=" * 50)
     exit(1)
 
-# Downloads Directory Path
-DOWNLOADS_DIR_PATH = Path(argv[1])
+# Directory Path that you want to organize
+DIR_PATH = Path(argv[1])
 
-for filename in DOWNLOADS_DIR_PATH.iterdir():
+for filename in DIR_PATH.iterdir():
+    if filename.suffix[1:] in '.DS_Store':
+        continue
     absolute_path = filename.absolute()
     if absolute_path.is_file():
-        destination = DOWNLOADS_DIR_PATH / get_directory_name(filename)
+        destination = DIR_PATH / get_directory_name(filename)
         if not destination.exists():
             destination.mkdir()
         
